@@ -7,6 +7,7 @@ export const BoardWrapper = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    flex-wrap: wrap;
     padding: 1em;
     margin: 0 -15px;
     background: url("https://technology.inquirer.net/files/2017/10/the-most-famous-windows-wallpaper-ever-turns-20-505668-2.jpg");
