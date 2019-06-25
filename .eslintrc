@@ -18,7 +18,7 @@
                 "extensions": [".js", ".jsx"]
             }
         ],
-        "react/prefer-stateless-function": 1,
+        "react/prefer-stateless-function": 0,
         "react/prop-types": 1
     },
     "env": {
