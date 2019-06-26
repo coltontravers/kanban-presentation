@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Droppable } from "react-beautiful-dnd";
 import BoardItem from "../BoardItem/BoardItem";
 import { ColumnWrapper, ColumnHeader } from "./Column.styles";
 
@@ -6,16 +7,26 @@ class Column extends Component {
     render() {
         const { column } = this.props;
 
-        console.log("COLUMN:", column);
-
-        return column.items.map((columnItem, index) => {
-            return (
-                <ColumnWrapper>
-                    <ColumnHeader>{column.name}</ColumnHeader>
-                    <BoardItem key={index} item={columnItem} />
-                </ColumnWrapper>
-            );
-        });
+        return (
+            <ColumnWrapper>
+                <ColumnHeader>{column.name}</ColumnHeader>
+                <Droppable droppableId={column.id}>
+                    {provided => (
+                        <div ref={provided.innerRef}>
+                            {column.items.map(columnItem => {
+                                return (
+                                    <BoardItem
+                                        key={columnItem.id}
+                                        item={columnItem}
+                                    />
+                                );
+                            })}
+                            {provided.placeholder}
+                        </div>
+                    )}
+                </Droppable>
+            </ColumnWrapper>
+        );
     }
 }
 

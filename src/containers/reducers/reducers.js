@@ -1,24 +1,28 @@
 import { combineReducers } from "redux";
-import { ADD_BOARD_ITEM } from "../actions/actions";
+import { ADD_BOARD_ITEM, RE_ORDER_BOARD_ITEMS } from "../actions/actions";
 
 const initialState = {
     boardItems: {
         columns: [
             {
+                id: 1,
                 name: "Here's a column",
-                items: [{ name: "Test" }]
+                items: [{ id: 1, name: "Test" }]
             },
             {
+                id: 2,
                 name: "There couldn't be another column",
-                items: [{ name: "Another One" }]
+                items: [{ id: 2, name: "Another One" }]
             },
             {
+                id: 3,
                 name: "There is??!? W0W",
-                items: [{ name: "Another one...." }]
+                items: [{ id: 3, name: "Another one...." }]
             },
             {
+                id: 4,
                 name: "Hi. Welcome to Chilli's.",
-                items: [{ name: "You played yourself...." }]
+                items: [{ id: 4, name: "You played yourself...." }]
             }
         ]
     }
@@ -34,6 +38,8 @@ function boardItems(state = initialState.boardItems, action) {
                     name: action.name
                 }
             ];
+        case RE_ORDER_BOARD_ITEMS:
+            return [...action];
         default:
             return state;
     }
